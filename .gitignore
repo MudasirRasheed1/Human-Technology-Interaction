@@ -1,0 +1,28 @@
+# Datasets: never commit (licences forbid redistribution; size)
+**/data/*
+!**/data/README.md
+*.zip
+*.tar.gz
+
+# Trained models and caches (rebuildable with each approach's scripts)
+**/models/*
+!**/models/README.md
+**/reports/cache/
+*.joblib
+*.pkl
+*.pt
+*.h5
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS / editors
+.DS_Store
+__MACOSX/
+Thumbs.db
+.vscode/
+.idea/
