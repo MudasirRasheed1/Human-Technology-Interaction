@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+    <style>
+      .t { font-size: 19px; font-weight: 700; fill: #1f2937; }
+      .b { font-size: 14.5px; fill: #374151; }
+      .lane { font-size: 14px; font-weight: 700; letter-spacing: 1px; }
+      .a { stroke: #555; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .sensor { fill: #E8F1FB; stroke: #4C78A8; stroke-width: 2; }
+      .text { fill: #E9F5E9; stroke: #54A24B; stroke-width: 2; }
+      .fuse { fill: #F3E8FA; stroke: #8E5CB5; stroke-width: 2; }
+      .policy { fill: #FFF1E0; stroke: #E8890C; stroke-width: 2; }
+      .llm { fill: #FDE8E8; stroke: #D64545; stroke-width: 2; }
+      .out { fill: #F2F2F2; stroke: #777777; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#ffffff"/>
+
+  <!-- lane labels -->
+  <text class="lane" x="40" y="52" fill="#4C78A8">SENSOR PATHWAY · every 5 seconds</text>
+  <text class="lane" x="40" y="622" fill="#3F8A37">LANGUAGE PATHWAY · every message</text>
+  <text class="lane" x="1290" y="52" fill="#C26F00">ADAPTATION · every message</text>
+
+  <!-- sensor pathway -->
+  <rect class="sensor" x="40" y="70" width="220" height="170" rx="14"/>
+  <text class="t" x="54" y="100">Wearable sensors</text>
+  <text class="b" x="54" y="128">E4 wristband:</text>
+  <text class="b" x="54" y="148">skin conductance (EDA),</text>
+  <text class="b" x="54" y="168">pulse (BVP), heart rate,</text>
+  <text class="b" x="54" y="188">skin temperature, motion</text>
+  <text class="b" x="54" y="215" font-style="italic">now: K-EmoCon replay</text>
+
+  <rect class="sensor" x="300" y="70" width="200" height="170" rx="14"/>
+  <text class="t" x="314" y="100">Feature extraction</text>
+  <text class="b" x="314" y="128">10-s window, every 5 s</text>
+  <text class="b" x="314" y="148">13 features:</text>
+  <text class="b" x="314" y="168">EDA level, slope, peaks</text>
+  <text class="b" x="314" y="188">heart rate &amp; HRV</text>
+  <text class="b" x="314" y="208">skin temp · motion</text>
+
+  <rect class="sensor" x="540" y="70" width="200" height="170" rx="14"/>
+  <text class="t" x="554" y="100">Personal baseline</text>
+  <text class="b" x="554" y="128">first 2 min of the</text>
+  <text class="b" x="554" y="148">session = baseline</text>
+  <text class="b" x="554" y="168">→ z-scores:</text>
+  <text class="b" x="554" y="188">“higher than usual</text>
+  <text class="b" x="554" y="208">for this person”</text>
+
+  <rect class="sensor" x="780" y="70" width="220" height="170" rx="14"/>
+  <text class="t" x="794" y="100">Emotion model</text>
+  <text class="b" x="794" y="128">→ valence &amp; arousal (1–5)</text>
+  <text class="b" x="794" y="148">gradient boosting,</text>
+  <text class="b" x="794" y="168">trained on K-EmoCon</text>
+  <text class="b" x="794" y="188">self-reports (28 people)</text>
+
+  <rect class="sensor" x="1040" y="70" width="200" height="170" rx="14"/>
+  <text class="t" x="1054" y="100">Smoothing</text>
+  <text class="b" x="1054" y="128">30-s average</text>
+  <text class="b" x="1054" y="148">+ trend:</text>
+  <text class="b" x="1054" y="168">rising / falling /</text>
+  <text class="b" x="1054" y="188">steady</text>
+
+  <path class="a" d="M260,155 H298"/>
+  <path class="a" d="M500,155 H538"/>
+  <path class="a" d="M740,155 H778"/>
+  <path class="a" d="M1000,155 H1038"/>
+  <path class="a" d="M1140,240 V298"/>
+
+  <!-- researcher controls (configuration, not part of the data flow) -->
+  <rect x="300" y="335" width="640" height="150" rx="14" fill="#FAFAFA" stroke="#9A9A9A" stroke-width="2" stroke-dasharray="7 6"/>
+  <text class="t" x="314" y="365">Researcher controls (sidebar)</text>
+  <text class="b" x="314" y="393">• Sensor input: K-EmoCon replay through the model,</text>
+  <text class="b" x="327" y="413">recorded self-report, or manual sliders (Wizard of Oz)</text>
+  <text class="b" x="314" y="433">• Condition: adaptive or static (control)</text>
+  <text class="b" x="314" y="453">• Participant view hides the monitor · participant ID for logs</text>
+
+  <!-- language pathway -->
+  <rect class="text" x="40" y="640" width="220" height="170" rx="14"/>
+  <text class="t" x="54" y="670">User message</text>
+  <text class="b" x="54" y="698">typed in the chat,</text>
+  <text class="b" x="54" y="718">e.g. “nothing works,</text>
+  <text class="b" x="54" y="738">I want to quit”</text>
+
+  <rect class="text" x="300" y="640" width="320" height="170" rx="14"/>
+  <text class="t" x="314" y="670">Message tone reader</text>
+  <text class="b" x="314" y="698">small LLM call → JSON:</text>
+  <text class="b" x="314" y="718">valence &amp; arousal (1–5),</text>
+  <text class="b" x="314" y="738">confidence (0–1) and a cue,</text>
+  <text class="b" x="314" y="758">e.g. “says stuck, frustrated”</text>
+
+  <rect class="text" x="660" y="640" width="280" height="170" rx="14"/>
+  <text class="t" x="674" y="670">Carry-over</text>
+  <text class="b" x="674" y="698">low-information messages (“ok”,</text>
+  <text class="b" x="674" y="718">plain questions) keep the last</text>
+  <text class="b" x="674" y="738">estimate, fading ×0.6 per</text>
+  <text class="b" x="674" y="758">message</text>
+
+  <path class="a" d="M260,725 H298"/>
+  <path class="a" d="M620,725 H658"/>
+  <path class="a" d="M940,725 H1140 V482"/>
+
+  <!-- fusion -->
+  <rect class="fuse" x="1040" y="300" width="200" height="180" rx="14"/>
+  <text class="t" x="1054" y="330">Fusion</text>
+  <text class="b" x="1054" y="358">valence: 80% message,</text>
+  <text class="b" x="1054" y="378">20% sensors</text>
+  <text class="b" x="1054" y="398">arousal: 50% / 50%</text>
+  <text class="b" x="1054" y="418">× message confidence</text>
+  <text class="b" x="1054" y="445">flags disagreement</text>
+  <path class="a" d="M1240,340 H1288"/>
+
+  <!-- adaptation & response -->
+  <rect class="policy" x="1290" y="70" width="280" height="305" rx="14"/>
+  <text class="t" x="1304" y="100">Adaptation policy</text>
+  <text class="b" x="1304" y="122" font-style="italic">builds the system prompt</text>
+  <text class="b" x="1304" y="148">• Condition: adaptive / static</text>
+  <text class="b" x="1304" y="168">• Accuracy first: check the</text>
+  <text class="b" x="1317" y="188">user’s answers</text>
+  <text class="b" x="1304" y="208">• Affect: valence, arousal,</text>
+  <text class="b" x="1317" y="228">trend, message cue</text>
+  <text class="b" x="1304" y="248">• Calming rubric: de-escalate ·</text>
+  <text class="b" x="1317" y="268">ground · re-engage · keep</text>
+  <text class="b" x="1317" y="288">momentum · keep steady</text>
+  <text class="b" x="1304" y="308">• Pause: 2 stressed turns,</text>
+  <text class="b" x="1317" y="328">no code, ≤ 1 per 10 min</text>
+  <text class="b" x="1304" y="348">• Never mention sensors</text>
+
+  <rect class="llm" x="1290" y="415" width="280" height="100" rx="14"/>
+  <text class="t" x="1304" y="445">LLM · OpenAI gpt-6-luna</text>
+  <text class="b" x="1304" y="473">reasoning effort: low</text>
+  <text class="b" x="1304" y="493">reply streamed to the chat</text>
+
+  <rect class="out" x="1290" y="555" width="280" height="130" rx="14"/>
+  <text class="t" x="1304" y="585">Chat UI (Streamlit)</text>
+  <text class="b" x="1304" y="613">participant view: chat only</text>
+  <text class="b" x="1304" y="633">researcher view: affect</text>
+  <text class="b" x="1304" y="653">monitor + prompt details</text>
+
+  <rect class="out" x="1290" y="725" width="280" height="120" rx="14"/>
+  <text class="t" x="1304" y="755">Per-turn log (JSONL)</text>
+  <text class="b" x="1304" y="783">readings · strategy · prompt</text>
+  <text class="b" x="1304" y="803">reply · timings → analysis</text>
+
+  <path class="a" d="M1430,375 V413"/>
+  <path class="a" d="M1430,515 V553"/>
+  <path class="a" d="M1430,685 V723"/>
+
+  <!-- the message itself and the chat history also go to the LLM -->
+  <path d="M150,810 V870 H1262 V465 H1288" stroke="#555" stroke-width="2" fill="none" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+  <text class="b" x="560" y="862" fill="#555">message + conversation history (last 20 messages)</text>
+</svg>

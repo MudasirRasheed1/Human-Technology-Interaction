@@ -1,0 +1,9 @@
+streamlit>=1.50
+openai>=1.40
+python-dotenv
+altair
+scikit-learn
+scipy
+pandas
+numpy
+joblib
