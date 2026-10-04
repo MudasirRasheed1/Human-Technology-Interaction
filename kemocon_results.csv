@@ -1,0 +1,10 @@
+task,scheme,acc,bal_acc,f1
+Binary Arousal,"Pooled random 5-fold (paper-style, leaky)",0.7955004326507067,0.7942604491642735,0.7946886903516498
+Binary Arousal,Per-subject blocked 5-fold (subject-dependent),0.6097490625901356,0.6089823524040758,0.609017195038103
+Binary Arousal,LOSO (subject-independent),0.5575425439861552,0.5532966860855314,0.5493663785799017
+Binary Valence,"Pooled random 5-fold (paper-style, leaky)",0.8546293625612922,0.8548089998023207,0.8545782475567301
+Binary Valence,Per-subject blocked 5-fold (subject-dependent),0.6398883374689827,0.6360219711651653,0.6362371568790091
+Binary Valence,LOSO (subject-independent),0.5572541101817133,0.557765637469358,0.5552626487880721
+4-Class Quadrant,"Pooled random 5-fold (paper-style, leaky)",0.7531006633977502,0.7469996198502299,0.7482366811561186
+4-Class Quadrant,Per-subject blocked 5-fold (subject-dependent),0.45832131525814823,0.45201861240275365,0.4507184183423356
+4-Class Quadrant,LOSO (subject-independent),0.28929910585520624,0.2672722664729141,0.2607448674196309
